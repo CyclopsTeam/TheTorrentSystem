@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.20827.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TorrentSite.Models", "TorrentSite.Models\TorrentSite.Models.csproj", "{9CE69D24-1390-4CC5-A2D8-5A431BD7740A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TorrentSite.Data", "TorrentSite.Data\TorrentSite.Data.csproj", "{A95EAB51-08A9-4516-B133-97596743AD59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TorrentSite", "TorrentSite\TorrentSite.csproj", "{60D9FE6E-983E-4BEC-8476-988C44EB93B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CE69D24-1390-4CC5-A2D8-5A431BD7740A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CE69D24-1390-4CC5-A2D8-5A431BD7740A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CE69D24-1390-4CC5-A2D8-5A431BD7740A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CE69D24-1390-4CC5-A2D8-5A431BD7740A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A95EAB51-08A9-4516-B133-97596743AD59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A95EAB51-08A9-4516-B133-97596743AD59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A95EAB51-08A9-4516-B133-97596743AD59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A95EAB51-08A9-4516-B133-97596743AD59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60D9FE6E-983E-4BEC-8476-988C44EB93B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60D9FE6E-983E-4BEC-8476-988C44EB93B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60D9FE6E-983E-4BEC-8476-988C44EB93B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60D9FE6E-983E-4BEC-8476-988C44EB93B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
