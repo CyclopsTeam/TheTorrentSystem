@@ -174,6 +174,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CataloguesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TorrentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -182,6 +183,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\TorrentViewModel.cs" />
     <Compile Include="ViewModels\CatalogueViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +244,7 @@
     <Content Include="Libraries\Kendo.Mvc.dll" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="App_Data\TorrentFiles\myFirstTorrent.torrent" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -281,6 +284,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\Kendo\jquery.min.map" />
     <Content Include="Views\Catalogues\Index.cshtml" />
+    <Content Include="Views\Torrents\Index.cshtml" />
+    <Content Include="Views\Shared\_TorrentDetails.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
