@@ -15,7 +15,16 @@ namespace TorrentSite.Controllers
         public ActionResult Index()
         {
             var catalogues = this.context.Catalogues
-                .Select(c => new TreeViewItemModel { Text = c.Name });
+                .ToList()
+                .Select(c => new TreeViewItemModel
+                {
+                    Text = c.Name,
+                    Items = c.Categories
+                    .Select(ct => new TreeViewItemModel
+                    {
+                        Text = ct.Name
+                    }).ToList()
+                });
 
             return View(catalogues);
         }
