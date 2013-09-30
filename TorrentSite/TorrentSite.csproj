@@ -171,9 +171,9 @@
     <Compile Include="ViewModels\CatalogueViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\TorrentSite.Data.DataContext.mdf" />
-    <Content Include="App_Data\TorrentSite.Data.DataContext_log.ldf">
-      <DependentUpon>TorrentSite.Data.DataContext.mdf</DependentUpon>
+    <Content Include="App_Data\TorrentSite.mdf" />
+    <Content Include="App_Data\TorrentSite_log.ldf">
+      <DependentUpon>TorrentSite.mdf</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />

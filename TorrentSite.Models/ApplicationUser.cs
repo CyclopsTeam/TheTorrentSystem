@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TorrentSite.Models
 {
-    public class ApplicatoinUser : User
+    public class ApplicationUser : User
     {
         public long Uploaded { get; set; }
 

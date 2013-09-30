@@ -7,7 +7,7 @@ namespace TorrentSite.Data.Migrations
     using System.Linq;
     using TorrentSite.Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TorrentSite.Data.DataContext>
+    public sealed class Configuration : DbMigrationsConfiguration<TorrentSite.Data.DataContext>
     {
         public Configuration()
         {
@@ -17,7 +17,7 @@ namespace TorrentSite.Data.Migrations
 
         protected override void Seed(TorrentSite.Data.DataContext context)
         {
-            this.PopulateDb(context);
+            //this.PopulateDb(context);
         }
 
         private void PopulateDb(DataContext context)

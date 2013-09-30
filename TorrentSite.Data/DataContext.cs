@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -8,7 +9,7 @@ using TorrentSite.Models;
 
 namespace TorrentSite.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContextWithCustomUser<ApplicationUser>
     {
         public IDbSet<Torrent> Torrents { get; set; }
 

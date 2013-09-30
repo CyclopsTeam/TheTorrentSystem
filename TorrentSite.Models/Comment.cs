@@ -14,7 +14,7 @@ namespace TorrentSite.Models
 
         public DateTime DateCreated { get; set; }
 
-        public virtual ApplicatoinUser Creator { get; set; }
+        public virtual ApplicationUser Creator { get; set; }
 
         public virtual Torrent Torrent { get; set; }
     }
