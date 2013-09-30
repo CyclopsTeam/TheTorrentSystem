@@ -9,9 +9,12 @@ using TorrentSite.ViewModels;
 
 namespace TorrentSite.Controllers
 {
-    public class CataloguesController : Controller
+    public class CataloguesController : BaseController
     {
-        DataContext context = new DataContext();
+        public CataloguesController(IUowData data)
+            : base(data)
+        {
+        }
 
         public ActionResult Index()
         {
@@ -20,7 +23,7 @@ namespace TorrentSite.Controllers
 
         private IEnumerable<CatalogueViewModel> GetCatalogues()
         {
-            var catalogues = this.context.Catalogues
+            var catalogues = this.Data.Catalogues.All()
                 .Select(CatalogueViewModel.FromCatalogue).ToList();
 
             return catalogues;
@@ -29,7 +32,7 @@ namespace TorrentSite.Controllers
         public ActionResult Movies()
         {
             ViewBag.Message = "All Torrents.";
-            var movieCategories = context.Categories
+            var movieCategories = this.Data.Categories.All()
                 .Where(c => c.Catalogue.Name == "Movies")
                 .Select(c => new TreeViewItemModel
                 {
@@ -38,5 +41,5 @@ namespace TorrentSite.Controllers
 
             return View();
         }
-	}
+    }
 }
