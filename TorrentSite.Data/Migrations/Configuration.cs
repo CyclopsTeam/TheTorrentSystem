@@ -1,9 +1,11 @@
 namespace TorrentSite.Data.Migrations
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using TorrentSite.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<TorrentSite.Data.DataContext>
     {
@@ -15,18 +17,23 @@ namespace TorrentSite.Data.Migrations
 
         protected override void Seed(TorrentSite.Data.DataContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            this.PopulateDb(context);
+        }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+        private void PopulateDb(DataContext context)
+        {
+            var catalogues = new List<Catalogue>
+            {
+                new Catalogue { Name = "Movies" },
+                new Catalogue { Name = "Games" },
+                new Catalogue { Name = "Music" },
+                new Catalogue { Name = "Programs" },
+            };
+
+            foreach (var catalogue in catalogues)
+            {
+                context.Catalogues.AddOrUpdate(catalogue);
+            }
         }
     }
 }
