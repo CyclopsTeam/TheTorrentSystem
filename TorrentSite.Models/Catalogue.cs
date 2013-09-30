@@ -18,12 +18,5 @@ namespace TorrentSite.Models
         public string Name { get; set; }
 
         public virtual ICollection<Category> Categories { get; set; }
-
-        /*
-         Movie
-         Game
-         Music
-         Programs
-         */
     }
 }

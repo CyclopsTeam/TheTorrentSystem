@@ -1,0 +1,27 @@
+﻿@using TorrentSite.ViewModels
+@model IEnumerable<CatalogueViewModel>
+@{
+    ViewBag.Title = "Catalogues";
+}
+
+<script type="text/x-kendo-tmpl" id="catalogues">
+    <div class="catalogue">
+        <h3>#:Name#</h3>
+    </div>
+</script>
+
+@(Html.Kendo().ListView(Model)
+    .Name("listview-catalogues")
+    .TagName("div")
+    .ClientTemplateId("catalogues")
+    .Selectable(selectable => selectable.Mode(ListViewSelectionMode.Single))
+    .Events(events => events.Change("onChange")
+)
+
+<script>
+    function onChange(arg) {
+        var selected = $.map(this.select(), function (item) {
+
+        });
+    }
+</script>
