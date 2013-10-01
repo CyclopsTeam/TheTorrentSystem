@@ -1,0 +1,83 @@
+﻿@using TorrentSite.Areas.ViewModels;
+
+<h2>AllUsers</h2>
+
+
+@(Html.Kendo()
+        .Grid<UserViewModel>()
+    .Name("grid-user")
+    .Columns(columns =>
+    {
+        columns.Bound(model => model.Username);
+        columns.Bound(model => model.Roles);
+        columns.Command(command =>
+            {
+                command.Edit().Text("Promote");
+                command.Destroy();
+            });
+    })
+    .ToolBar(tool =>
+        {
+            tool.Create();
+        })
+    .Pageable(page =>
+        {
+            page.PreviousNext(true);
+            page.Numeric(true);
+        })
+    .Sortable(sort =>
+        {
+            sort.AllowUnsort(false);
+            sort.SortMode(GridSortMode.SingleColumn);
+        })
+    .Groupable()
+    .Filterable()
+    .Resizable(resize => resize.Columns(true))
+    .Navigatable()
+    .Editable(edit =>
+        {
+            edit.Mode(GridEditMode.PopUp).TemplateName("UpdateUser");
+        })
+    .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+    .Events(ev =>
+        {
+            ev.Change("selectRow");
+        })
+    .DataSource(data =>
+    {
+        data.Ajax()
+            .Model(m => m.Id(b => b.Id))
+            .PageSize(10)
+            .ServerOperation(true)
+            .Events(ev => ev.Error("errorAlert"))
+            .Create("CreateBook", "Books")
+            .Read("ReadUsers", "Users")
+            .Update("UpdateUser", "Users")
+            .Destroy("DeleteBook", "Books");
+    }))
+
+<div id="selected">
+
+</div>
+
+<script>
+    function selectRow() {
+        var selected = $.map(this.select(), function (item) {
+            return $(item).text();
+        });
+
+        $('#selected').text(selected);
+    }
+
+    function errorAlert() {
+        console.log("An error ocurred");
+    }
+
+    function selectCatValue(e) {
+        $('#catNameTb').val(this.dataItem(e.item.index()).Name);
+        $('#catNameTb').text(this.dataItem(e.item.index()).Name);
+        $('#catNameTb').html(this.dataItem(e.item.index()).Name);
+
+
+    }
+</script>

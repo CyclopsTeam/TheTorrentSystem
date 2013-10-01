@@ -1,5 +1,6 @@
 ﻿namespace TorrentSite.Data
 {
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Collections.Generic;
     using TorrentSite.Models;
@@ -54,6 +55,22 @@
             get
             {
                 return this.GetRepository<ApplicationUser>();
+            }
+        }
+
+        public IRepository<Role> Roles
+        {
+            get
+            {
+                return this.GetRepository<Role>();
+            }
+        }
+
+        public IRepository<UserRole> UserRoles
+        {
+            get
+            {
+                return this.GetRepository<UserRole>();
             }
         }
 
