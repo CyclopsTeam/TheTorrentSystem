@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TorrentSite.ViewModels.TorrentViewModel>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileLink)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimesDownloaded)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seeders)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Leechers)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileLink)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateCreated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimesDownloaded)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seeders)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Leechers)
+        </td>
+    </tr>
+}
+
+</table>

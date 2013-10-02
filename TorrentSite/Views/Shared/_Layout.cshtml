@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
    
     
-     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")
     @Styles.Render("~/Content/kendo")
     @Scripts.Render("~/bundles/kendo")
 
@@ -29,6 +29,7 @@
                     <ul class="nav">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("Catalogues", "Index", "Catalogues")</li>
+                        <li>@Html.ActionLink("Torrents", "Index", "Torrents")</li>
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>

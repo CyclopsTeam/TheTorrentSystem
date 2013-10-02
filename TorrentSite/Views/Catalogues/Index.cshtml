@@ -1,27 +1,64 @@
-﻿@using TorrentSite.ViewModels
-@model IEnumerable<CatalogueViewModel>
+﻿@*@using TorrentSite.ViewModels
+@model IEnumerable<CatalogueViewModel>*@
+
+@model TorrentSite.ViewModels.CataloguesCategoriesViewModel
 @{
     ViewBag.Title = "Catalogues";
 }
 
-<script type="text/x-kendo-tmpl" id="catalogues">
+@*<script type="text/x-kendo-tmpl" id="catalogues">
     <div class="catalogue">
         <h3>#:Name#</h3>
     </div>
-</script>
+</script>*@
 
-@(Html.Kendo().ListView(Model)
+@*@(Html.Kendo().ListView(Model)
     .Name("listview-catalogues")
     .TagName("div")
     .ClientTemplateId("catalogues")
+    .DataSource(dataSource => dataSource
+        .Model(model => model.Id("Id"))
+        .Read(read => read.Action("Editing_Read", "Catalogues"))
+    )
+    .Editable()
     .Selectable(selectable => selectable.Mode(ListViewSelectionMode.Single))
     .Events(events => events.Change("onChange"))
-)
+)*@
+
+@*<script>
+    //function onChange(arg) {
+    //    var selected = $.map(this.select(), function (item) {
+    //        console.log((item.innerText).trim())
+    //    });
+    //}
+
+    //function onChange(arg) {
+    //    var selected = $.map(this.select(), function (item) {
+    //        return item.innerText;
+    //        var cat = item.innerText.trim();
+            
+    //        var location = "http://localhost:33589/Catalogues/" + item.innerText;
+    //        console.log(location.trim());
+    //    });
+
+    //    console.log(selected[0]);
+    //}
+
+</script>*@
+
+<div class="hero-unit">
+    @(Html.Kendo()
+    .TreeView()
+    .Name("CataloguesCategegories")
+    .Events(e => e.Select("select"))
+    .BindTo(Model.TreeView))
+</div>
 
 <script>
-    function onChange(arg) {
-        var selected = $.map(this.select(), function (item) {
-
-        });
+    //$(function () {
+    function select(ev) {
+        var name = this.text(ev.node);
+        window.location.href = "http://localhost:33589/Catalogues/ChoosenCatalogue/" + name;
     }
+    //});
 </script>

@@ -1,9 +1,54 @@
-﻿@model TorrentSite.ViewModels.TorrentViewModel
+﻿@using TorrentSite.ViewModels;
 
 @{
     ViewBag.Title = "Torrents";
 }
 
-@Html.Partial("_TorrentDetails", Model)
+@*@Html.Partial("_TorrentDetails", Model)*@
 
+<div class="hero-unit">
+    <h2>Torrents</h2>
 
+    @(Html.Kendo().Grid<TorrentViewModel>()
+        .Name("torrents-grid")
+        .Columns(columns =>
+                {
+                    columns.Bound(model => model.Image);
+                    columns.Bound(model => model.Title);
+                    columns.Bound(model => model.Rating);
+                    columns.Bound(model => model.DateCreated);
+                    columns.Bound(model => model.Size);
+                    columns.Bound(model => model.TimesDownloaded);
+                    columns.Bound(model => model.Seeders);
+                    columns.Bound(model => model.Leechers);
+                }).DataSource(data =>
+                    {
+                        data.Ajax()
+                            .Model(x => x.Field(f => f.Id)).PageSize(10).ServerOperation(true);
+                    })
+                        .Pageable()
+                        .Filterable()
+                        .DataSource(dataSource => dataSource
+                            .Server()
+                            .Read(read => read.Action("GetTorrents", "Torrents"))
+                        .PageSize(3)))
+
+    @*@(Html.Kendo().Grid<TorrentViewModel>()
+        .Name("torrents-grid")
+        .Columns(columns =>
+                {
+                    columns.Bound(model => model.Image);
+                    columns.Bound(model => model.Title);
+                    columns.Bound(model => model.Rating);
+                    columns.Bound(model => model.DateCreated);
+                    columns.Bound(model => model.Size);
+                    columns.Bound(model => model.TimesDownloaded);
+                    columns.Bound(model => model.Seeders);
+                    columns.Bound(model => model.Leechers);
+                }).Pageable()
+    .Filterable()
+    .DataSource(dataSource => dataSource
+        .Server()
+                                        .Read(read => read.Action("GetTorrents", "Torrents"))
+    .PageSize(3)))*@
+</div>

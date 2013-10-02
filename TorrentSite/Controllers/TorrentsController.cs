@@ -19,13 +19,20 @@ namespace TorrentSite.Controllers
         //
         // GET: /Torrents/
         [HttpGet]
-        public ActionResult Index(int id)
+        public ActionResult Index()
         {
-            var torrentViewModel = this.Data.Torrents.All().Where(t => t.Id == id).Select(TorrentViewModel.FromTorrent).ToList()[0];
-
-            return View(torrentViewModel);
+            var result = this.Data.Torrents.All().Select(TorrentViewModel.FromTorrent).ToList();
+            return View(result);
         }
 
+        public JsonResult GetTorrents()
+        {
+            var result = this.Data.Torrents.All().Select(TorrentViewModel.FromTorrent).ToList();
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+        }
+        
         [HttpGet]
         public ActionResult Download(string fileLink)
         {
