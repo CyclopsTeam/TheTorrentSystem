@@ -20,14 +20,23 @@ namespace TorrentSite.Areas.Administration.Controllers
         }
         public ActionResult Index()
         {
-            IList<SelectListItem> lists =( from role in Data.Roles.All().ToList()
+            IList<SelectListItem> listsRoles =( from role in Data.Roles.All().ToList()
                         select new SelectListItem()
                         {
                             Text = role.Name,
                             Value = role.Id
                         }).ToList();
 
-            ViewData["roles"] = lists;
+            ViewData["roles"] = listsRoles;
+
+            IEnumerable<SelectListItem> listsCatalogs = from catalog in Data.Catalogues.All().ToList()
+                                                select new SelectListItem()
+                                                {
+                                                    Text = catalog.Name,
+                                                    Value = catalog.Name
+                                                };
+
+            ViewData["catalogs"] = listsCatalogs;
 
             return View();
         }
@@ -79,8 +88,23 @@ namespace TorrentSite.Areas.Administration.Controllers
         {
 
             var users = Data.Users.All().Select(UserViewModel.FromUser).ToList();
+
+            foreach (var user in users)
+            {
+                user.RolesAsString = string.Join(", ", user.Roles);
+            }
            
             return Json(users.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteUser([DataSourceRequest] DataSourceRequest request, UserViewModel user)
+        {
+            var existingUser = Data.Users.All().FirstOrDefault(u => u.Id == user.Id);
+
+            Data.Users.Delete(existingUser);
+            Data.SaveChanges();
+
+            return Json(new[] { user }, JsonRequestBehavior.AllowGet);
         }
 
     }

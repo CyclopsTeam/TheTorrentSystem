@@ -29,6 +29,10 @@
                     <ul class="nav">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("Catalogues", "Index", "Catalogues")</li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Administration", "Index", "Administration/Users")</li>
+                        }
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>

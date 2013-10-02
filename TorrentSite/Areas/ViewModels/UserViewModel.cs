@@ -12,8 +12,13 @@ namespace TorrentSite.Areas.ViewModels
     public class UserViewModel
     {
         public string Id { get; set; }
+
+        [Required(ErrorMessage = "The field is required")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "User name must be between {2} and {1} symbols")]
         public string Username { get; set; }
         public IEnumerable<string> Roles { get; set; }
+
+        public string RolesAsString { get; set; }
 
         public string RoleForAddingId { get; set; }
         public string RoleForRemovingId { get; set; }
