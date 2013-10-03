@@ -56,6 +56,7 @@ namespace TorrentSite.Controllers
                 IdentityResult result = await IdentityManager.Authentication.CheckPasswordAndSignInAsync(AuthenticationManager, model.UserName, model.Password, model.RememberMe);
                 if (result.Success)
                 {
+                   
                     return RedirectToLocal(returnUrl);
                 }
                 else
