@@ -9,7 +9,7 @@
 <div class="hero-unit">
     <h2>Torrents</h2>
 
-    @(Html.Kendo().Grid<TorrentViewModel>()
+    @*@(Html.Kendo().Grid<TorrentViewModel>()
         .Name("torrents-grid")
         .Columns(columns =>
                 {
@@ -23,7 +23,7 @@
                     columns.Bound(model => model.Leechers);
                 }).DataSource(data =>
                     {
-                        data.Ajax()
+                        data.Ajax().Read(read => read.Action("GetTorrents", "Torrents")
                             .Model(x => x.Field(f => f.Id)).PageSize(10).ServerOperation(true);
                     })
                         .Pageable()
@@ -31,24 +31,76 @@
                         .DataSource(dataSource => dataSource
                             .Server()
                             .Read(read => read.Action("GetTorrents", "Torrents"))
-                        .PageSize(3)))
+                        .PageSize(3)))*@
 
     @*@(Html.Kendo().Grid<TorrentViewModel>()
-        .Name("torrents-grid")
-        .Columns(columns =>
-                {
-                    columns.Bound(model => model.Image);
-                    columns.Bound(model => model.Title);
-                    columns.Bound(model => model.Rating);
-                    columns.Bound(model => model.DateCreated);
-                    columns.Bound(model => model.Size);
-                    columns.Bound(model => model.TimesDownloaded);
-                    columns.Bound(model => model.Seeders);
-                    columns.Bound(model => model.Leechers);
-                }).Pageable()
-    .Filterable()
-    .DataSource(dataSource => dataSource
-        .Server()
-                                        .Read(read => read.Action("GetTorrents", "Torrents"))
-    .PageSize(3)))*@
+            .Name("torrents-grid")
+            .Columns(columns =>
+                    {
+                        columns.Bound(model => model.Image);
+                        columns.Bound(model => model.Title);
+                        columns.Bound(model => model.Rating);
+                        columns.Bound(model => model.DateCreated);
+                        columns.Bound(model => model.Size);
+                        columns.Bound(model => model.TimesDownloaded);
+                        columns.Bound(model => model.Seeders);
+                        columns.Bound(model => model.Leechers);
+                    }).Pageable()
+        .Filterable()
+        .DataSource(dataSource => dataSource
+            .Server()
+                                            .Read(read => read.Action("GetTorrents", "Torrents"))
+        .PageSize(3)))*@
+
+    @*@(Html.Kendo().Grid<TorrentViewModel>()
+            .Name("torrents-grid")
+            .DataSource(data =>
+            {
+                data.Ajax()
+                    .Model(mode => mode.Id(tor => tor.Id)
+                    .Read(read => read.Action("GetTorrents", "Torrents")))
+            })
+            .Columns(columns =>
+            {
+            columns.Bound(model => model.Image);
+            columns.Bound(model => model.Title);
+            columns.Bound(model => model.Rating);
+            columns.Bound(model => model.DateCreated);
+            columns.Bound(model => model.Size);
+            columns.Bound(model => model.TimesDownloaded);
+            columns.Bound(model => model.Seeders);
+            columns.Bound(model => model.Leechers);
+            })
+        )*@
+
+    @(Html.Kendo().Grid<TorrentViewModel>()
+.Name("Grid")
+.Columns(columns =>
+    {
+        columns.Bound(model => model.Image);
+        columns.Bound(model => model.Title);
+        columns.Bound(model => model.Rating);
+        columns.Bound(model => model.DateCreated);
+        columns.Bound(model => model.Size);
+        columns.Bound(model => model.TimesDownloaded);
+        columns.Bound(model => model.Seeders);
+        columns.Bound(model => model.Leechers);
+       
+    })
+
+.DataSource(datasource => datasource
+.Ajax()
+.Model(model =>
+{
+    model.Id(book => book.Id);
+})
+.ServerOperation(false)
+.Read(read => read.Action("GetTorrents", "Torrents"))
+)
+.Pageable()
+.Sortable()
+
+    )
+
+
 </div>

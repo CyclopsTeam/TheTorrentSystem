@@ -11,10 +11,11 @@ namespace TorrentSite
             //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
             //            "~/Scripts/jquery-{version}.js",
             //            "~/Scripts/jquery.unobtrusive-ajax.js"));
+            bundles.Add(new ScriptBundle("~/bundles/unobrtrusive")
+                .Include("~/Scripts/jquery.unobtrusive-ajax.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery")
-                .Include("~/Scripts/Kendo/jquery.min.js",
-                        "~/Scripts/jquery.unobtrusive-ajax.js"));
+                .Include("~/Scripts/Kendo/jquery.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

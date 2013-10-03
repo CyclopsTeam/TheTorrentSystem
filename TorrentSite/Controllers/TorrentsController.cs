@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Kendo.Mvc.UI;
+using Kendo.Mvc.Extensions;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,13 +27,20 @@ namespace TorrentSite.Controllers
             return View(result);
         }
 
-        public JsonResult GetTorrents()
+        public JsonResult GetTorrents([DataSourceRequest] DataSourceRequest request)
         {
-            var result = this.Data.Torrents.All().Select(TorrentViewModel.FromTorrent).ToList();
-
-            return Json(result, JsonRequestBehavior.AllowGet);
+            var result = this.Data.Torrents.All().Select(TorrentViewModel.FromTorrent);
+            DataSourceResult requestResult = result.ToDataSourceResult(request);
+            return Json(requestResult, JsonRequestBehavior.AllowGet);
 
         }
+
+        //public JsonResult GetTorrents([DataSourceRequest]DataSourceRequest request)
+        //{
+        //    var result = this.Data.Torrents.All().Select(TorrentViewModel.FromTorrent);
+        //    var torrents = result.ToDataSourceResult(request);
+        //    return Json(torrents, JsonRequestBehavior.AllowGet);
+        //}
         
         [HttpGet]
         public ActionResult Download(string fileLink)
