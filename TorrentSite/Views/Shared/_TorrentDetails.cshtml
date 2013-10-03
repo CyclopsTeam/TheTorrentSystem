@@ -1,0 +1,43 @@
+﻿@model TorrentSite.ViewModels.TorrentViewModel
+
+<h2>Title: @Model.Title</h2>
+
+<div class="hero-unit">
+    <div>
+        @if (Model.Image != null)
+        {
+            <img src="data:image;base64,@System.Convert.ToBase64String(Model.Image)" />
+        }
+        else
+        {
+            <p>No image!</p>
+        }
+
+        @Html.ActionLink("Download", "Download", "Torrents", new { fileLink = Model.FileLink }, null);
+        <h3>Description</h3>
+        <p>@Model.Description</p>
+        <section id="download-info">
+            <dl>
+                <dt>TimesDownloaded:</dt>
+                <dd>@Model.TimesDownloaded</dd>
+                <dt>Seeders:</dt>
+                <dd>@Model.Seeders</dd>
+                <dt>Leechers:</dt>
+                <dd>@Model.Leechers</dd>
+            </dl>
+        </section>
+        <section id="common-info">
+            <dl>
+                <dt>Uploaded On:</dt>
+                <dd>@Model.DateCreated</dd>
+                <dt>Rating:</dt>
+                <dd>@Model.Rating / 5</dd>
+                <dt>Size:</dt>
+                <dd>@Model.Size</dd>
+                <dt>Categories:</dt>
+                <dd>@string.Join(", ", Model.Category.Select(c => c.Name))</dd>
+            </dl>
+        </section>
+        <a>View Comments</a>
+    </div>
+</div>

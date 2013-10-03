@@ -6,13 +6,12 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-   
-    
-     @Scripts.Render("~/bundles/jquery")
+
+
+    @Scripts.Render("~/bundles/jquery")
     @Styles.Render("~/Content/kendo")
     @Scripts.Render("~/bundles/kendo")
 
-    @Scripts.Render("~/bundles/bootstrap")
 
 </head>
 <body>
@@ -24,21 +23,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "brand" })
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Catalogues", "Index", "Catalogues")</li>
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li>@Html.ActionLink("Administration", "Index", "Administration/Users")</li>
-                        }
                     </ul>
-                    @Html.Partial("_LoginPartial")
                 </div>
             </div>
         </div>
     </div>
+
     <div class="container">
         @RenderBody()
         <hr />
@@ -47,6 +39,7 @@
         </footer>
     </div>
 
+    @Scripts.Render("~/bundles/bootstrap")    
     @RenderSection("scripts", required: false)
 </body>
 </html>
