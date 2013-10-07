@@ -29,14 +29,6 @@ namespace TorrentSite.Areas.Administration.Controllers
 
             ViewData["roles"] = listsRoles;
 
-            IEnumerable<SelectListItem> listsCatalogs = from catalog in Data.Catalogues.All().ToList()
-                                                select new SelectListItem()
-                                                {
-                                                    Text = catalog.Name,
-                                                    Value = catalog.Name
-                                                };
-
-            ViewData["catalogs"] = listsCatalogs;
 
             return View();
         }

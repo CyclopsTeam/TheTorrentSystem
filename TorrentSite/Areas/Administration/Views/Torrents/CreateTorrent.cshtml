@@ -1,0 +1,71 @@
+﻿@model TorrentSite.ViewModels.TorrentViewModel
+@{
+    ViewBag.Title = "CreateTorrent";
+}
+
+<h2>CreateTorrent</h2>
+
+@using (Html.BeginForm("CreateNewTorrent", "Torrents"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset class="form-horizontal">
+        <legend>Torrent</legend>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Title, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title, null, new { @class = "help-inline" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.FileLink, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.FileLink)
+                @Html.ValidationMessageFor(model => model.FileLink, null, new { @class = "help-inline" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description, null, new { @class = "help-inline" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Size, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.Size)
+                @Html.ValidationMessageFor(model => model.Size, null, new { @class = "help-inline" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.CatalogueId, new { @class = "control-label" })
+            <div class="controls">
+                @Html.DropDownList("CatalogueName", (IList<SelectListItem>)ViewData["catalogs"])
+                @Html.ValidationMessageFor(model => model.CatalogueId, null, new { @class = "help-inline" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Image, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.Image, "fileUpload")
+                @Html.ValidationMessageFor(model => model.Image, null, new { @class = "help-inline" })
+            </div>
+        </div>
+
+
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Create" class="btn" />
+        </div>
+    </fieldset>
+}
+@Html.ActionLink("Back", "Index", "Torrents", null, new { @class = "btn" })
