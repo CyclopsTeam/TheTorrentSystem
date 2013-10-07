@@ -191,7 +191,9 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CataloguesCategoriesViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\CommentViewModel.cs" />
     <Compile Include="ViewModels\SingleCatalogueViewModel.cs" />
+    <Compile Include="ViewModels\SubmitCommentModel.cs" />
     <Compile Include="ViewModels\TorrentViewModel.cs" />
     <Compile Include="ViewModels\CatalogueViewModel.cs" />
   </ItemGroup>
