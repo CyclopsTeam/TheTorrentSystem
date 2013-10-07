@@ -1,0 +1,11 @@
+﻿
+
+@(Html.Kendo()
+        .Upload()
+        .Name("Image")
+        .Multiple(true)
+        .Async(async =>
+        {
+            async.AutoUpload(true)
+                .Save("UploadedFiles", "Torrents");
+        }))

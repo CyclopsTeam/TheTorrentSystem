@@ -11,7 +11,7 @@ namespace TorrentSite.Controllers
 {
     public class CataloguesController : BaseController
     {
-        private string nameOfTheSearch = "";
+        //private string nameOfTheSearch = "";
         public CataloguesController(IUowData data)
             : base(data)
         {

@@ -9,7 +9,7 @@
 
 
     @Scripts.Render("~/bundles/jquery")
-    @Styles.Render("~/Content/kendo")
+    @Styles.Render("~/Content/kendo/css")
     @Scripts.Render("~/bundles/kendo")
 
 
@@ -24,8 +24,22 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="nav-collapse collapse">
-                    <ul class="nav">
-                    </ul>
+                    @(Html.Kendo()
+                        .Menu()
+                        .Name("main-menu")
+                        .Items(items =>
+                        {
+                            items.Add().Text("Home").Action("Index", "../Home");
+
+                            items.Add().Text("AdministrationAreas").Items(children =>
+                                {
+                                    children.Add().Text("UserAdministration").Action("Index", "Users");
+                                    children.Add().Text("CategoriesAdministration").Action("Index", "Categories");
+                                    children.Add().Text("TorrentsAdministration").Action("Index", "Torrents");
+                                    
+                                });
+                        })
+                        .Direction(MenuDirection.Bottom))
                 </div>
             </div>
         </div>
