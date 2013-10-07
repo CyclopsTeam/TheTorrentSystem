@@ -10,7 +10,7 @@ namespace TorrentSite.Models
     {
         public Torrent()
         {
-            this.Category = new HashSet<Category>();
+            this.Categories = new HashSet<Category>();
             this.Comments = new HashSet<Comment>();
         }
 
@@ -37,9 +37,7 @@ namespace TorrentSite.Models
         public int Leechers { get; set; }
 
         public int CatalogueId { get; set; }
-
-        //public virtual Catalogue Catalog { get; set; }
-        public virtual ICollection<Category> Category { get; set; }
+        public virtual ICollection<Category> Categories { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
     }

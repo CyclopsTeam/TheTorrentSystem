@@ -10,17 +10,26 @@
     @Model.Image
 </div>
 
-@for (int i = 0; i < Model.Categories.Count; i++)
-{
-    <label class="checkbox inline" for="@Model.Categories[i].Id"><input type="checkbox" name="@Model.Categories[i].Name" value="@Model.Categories[i].Name" id="@Model.Categories[i].Id">@Model.Categories[i].Name </label>
-}
-<input type="submit" value="submit"/>
+<div id="category-checkbox-container row">
+    @using (Html.BeginForm("FilterByCategory", "Catalogues"))
+    {
+        for (int i = 0; i < Model.Categories.Count(); i++)
+        {
+            @*<label class="checkbox inline">
+                <input type="checkbox" value="@Model.Categories[i].Name" id="@Model.Categories[i].Id">*@
+                @*@Html.ActionLink(Model.Categories[i].Name, "Categories/" + Model.Categories[i].Id,*@
+                "Categories")//, new { Model.Categories[i].Id }, new { @class = "btn" })
+            @*</label>*@
+        }
+        <input type="submit" value="submit" />
+    }
+</div>
 
 @using (Ajax.BeginForm("Search", new AjaxOptions
 {
     UpdateTargetId = "result",
     InsertionMode = InsertionMode.Replace,
-    OnSuccess="clearSeachField"
+    OnSuccess = "clearSeachField"
 }))
 {
     <input type="text" name="query" id="text-search" />

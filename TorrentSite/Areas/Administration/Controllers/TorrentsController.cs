@@ -13,7 +13,7 @@ using Kendo.Mvc.Extensions;
 
 namespace TorrentSite.Areas.Administration.Controllers
 {
-    [Authorize(Roles="Admin")]
+    //[Authorize(Roles="Admin")]
     public class TorrentsController : BaseController
     {
         public TorrentsController(IUowData data)
@@ -144,11 +144,11 @@ namespace TorrentSite.Areas.Administration.Controllers
                 if (torrentModel.CategoryToAdd!=null)
                 {
                     int categoryId = int.Parse(torrentModel.CategoryToAdd);
-                    var existingCategory = torrentEntity.Category.FirstOrDefault(c => c.Id == categoryId);
+                    var existingCategory = torrentEntity.Categories.FirstOrDefault(c => c.Id == categoryId);
                     if (existingCategory == null)
                     {
                         var newCategory = Data.Categories.All().FirstOrDefault(c => c.Id == categoryId);
-                        torrentEntity.Category.Add(newCategory);
+                        torrentEntity.Categories.Add(newCategory);
                     }
 
                 }
@@ -208,7 +208,7 @@ namespace TorrentSite.Areas.Administration.Controllers
             if (!String.IsNullOrEmpty(categoryId))
             {
                 int id = int.Parse(categoryId);
-                var torrents = Data.Torrents.All().Where(t => t.Category.Any(cat => cat.Id == id))
+                var torrents = Data.Torrents.All().Where(t => t.Categories.Any(cat => cat.Id == id))
                 .Select(TorrentViewModel.FromTorrent).ToList();
 
                 return PartialView("_AllTorrentsList", torrents);

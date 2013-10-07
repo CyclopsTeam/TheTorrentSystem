@@ -13,7 +13,7 @@
             <p>No image!</p>
         }
 
-        @Html.ActionLink("Download", "Download", "Torrents", new { fileLink = Model.FileLink }, null);
+        @Html.ActionLink("Download", "Download", "Torrents", new { fileLink = Model.FileLink }, null)
         <h3>Description</h3>
         <p>@Model.Description</p>
         <section id="download-info">
@@ -38,6 +38,23 @@
                 <dd>@string.Join(", ", Model.Category.Select(c => c.Name))</dd>
             </dl>
         </section>
-        <a>View Comments</a>
+        <br />
+        <div id="Comments">
+            @foreach (var comment in Model.Comments)
+            {
+                @Html.Partial("_CommentPartial", comment)
+            }
+        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            using (Ajax.BeginForm("PostComment", new AjaxOptions { HttpMethod = "Post", InsertionMode = InsertionMode.InsertAfter, UpdateTargetId = "Comments", OnFailure = "commentPostFailure" }))
+            {
+                @Html.Hidden("TorrentId", Model.Id)
+                @Html.TextArea("comment")
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Submit comment" />
+            }
+        }
+
     </div>
 </div>

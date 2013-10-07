@@ -85,7 +85,7 @@
         columns.Bound(model => model.TimesDownloaded);
         columns.Bound(model => model.Seeders);
         columns.Bound(model => model.Leechers);
-       
+        columns.Bound(model => model.Id).ClientTemplate(@Html.ActionLink("See Details", "Details", "Torrents", new { id = "#=Id#" }, new { @class = "btn"}).ToHtmlString());
     })
 
 .DataSource(datasource => datasource

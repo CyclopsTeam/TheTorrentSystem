@@ -24,11 +24,6 @@ namespace TorrentSite.Controllers
 
         private CataloguesCategoriesViewModel GetCatalogues()
         {
-            //var catalogues = this.Data.Catalogues.All()
-            //    .Select(CatalogueViewModel.FromCatalogue).ToList();
-
-            //return catalogues;
-
             var catalogues = this.Data.Catalogues.All().ToList()
               .Select(x => new TreeViewItemModel
               {
@@ -48,9 +43,17 @@ namespace TorrentSite.Controllers
             model.Categories = categories;
             return model;
         }
+
         public ActionResult Editing_Read([DataSourceRequest] DataSourceRequest request)
         {
             throw new ArgumentException();
+        }
+
+        public ActionResult FilterByCategory()
+        {
+
+
+            return View();
         }
 
         public ActionResult ChoosenCatalogue(string name)
