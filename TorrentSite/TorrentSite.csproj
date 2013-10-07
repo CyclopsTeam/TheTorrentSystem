@@ -190,7 +190,9 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CataloguesCategoriesViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\CommentViewModel.cs" />
     <Compile Include="ViewModels\SingleCatalogueViewModel.cs" />
+    <Compile Include="ViewModels\SubmitCommentModel.cs" />
     <Compile Include="ViewModels\TorrentViewModel.cs" />
     <Compile Include="ViewModels\CatalogueViewModel.cs" />
   </ItemGroup>
@@ -305,6 +307,8 @@
     <Content Include="Views\Catalogues\ChoosenCatalogue.cshtml" />
     <Content Include="Views\Catalogues\ChoosenCategory.cshtml" />
     <Content Include="Views\Shared\_TorrentsSearch.cshtml" />
+    <Content Include="Views\Shared\_CommentPartial.cshtml" />
+    <Content Include="Views\Torrents\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Models\" />
