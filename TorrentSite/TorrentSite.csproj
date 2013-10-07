@@ -178,6 +178,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CataloguesController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TorrentsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -197,10 +198,6 @@
     <Compile Include="ViewModels\CatalogueViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\TorrentSite.mdf" />
-    <Content Include="App_Data\TorrentSite_log.ldf">
-      <DependentUpon>TorrentSite.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -307,8 +304,7 @@
     <Content Include="Views\Catalogues\ChoosenCatalogue.cshtml" />
     <Content Include="Views\Catalogues\ChoosenCategory.cshtml" />
     <Content Include="Views\Shared\_TorrentsSearch.cshtml" />
-    <Content Include="Views\Shared\_CommentPartial.cshtml" />
-    <Content Include="Views\Torrents\Details.cshtml" />
+    <Content Include="Views\Categories\Categories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Models\" />
