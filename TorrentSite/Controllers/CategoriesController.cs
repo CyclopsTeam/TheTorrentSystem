@@ -10,8 +10,8 @@ namespace TorrentSite.Controllers
 {
     public class CategoriesController : BaseController
     {
-        public CategoriesController()
-            :base(new UowData())
+        public CategoriesController(IUowData data)
+            : base(data)
         {
         }
 

@@ -36,7 +36,8 @@ namespace TorrentSite.Controllers
                   .ToList()
               });
 
-            var categories = this.Data.Categories.All().Select(CategoryViewModel.FromCategory);
+            var categories = this.Data.Categories.All()
+                .Select(CategoryViewModel.FromCategory);
 
             CataloguesCategoriesViewModel model = new CataloguesCategoriesViewModel();
             model.TreeView = catalogues;
