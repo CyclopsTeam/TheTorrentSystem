@@ -29,7 +29,7 @@ namespace TorrentSite.ViewModels
                     Seeders = t.Seeders,
                     Leechers = t.Leechers,
                     CatalogueId = t.CatalogueId,
-                    Category = t.Category,
+                    Category = t.Categories,
                     Comments = t.Comments
                 };
             }
