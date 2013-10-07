@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -29,8 +30,8 @@ namespace TorrentSite.ViewModels
                     Seeders = t.Seeders,
                     Leechers = t.Leechers,
                     CatalogueId = t.CatalogueId,
-                    Category = t.Categories,
-                    Comments = t.Comments
+                    Category = t.Category,
+                    Comments = t.Comments.Select(x => new CommentViewModel() { Content = x.Content, CommentedBy = x.Creator.UserName, CommentedOn = x.DateCreated })
                 };
             }
         }
@@ -61,6 +62,6 @@ namespace TorrentSite.ViewModels
 
         public ICollection<Category> Category { get; set; }
 
-        public ICollection<Comment> Comments { get; set; }
+        public IEnumerable<CommentViewModel> Comments { get; set; }
     }
 }
