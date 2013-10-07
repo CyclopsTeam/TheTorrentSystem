@@ -1,24 +1,27 @@
-﻿@using TorrentSite.Areas.ViewModels;
+﻿
+@{
+    ViewBag.Title = "Index";
+}
 
+<h2>AllCategories</h2>
 
-
-
-
-                    <h2>AllUsers</h2>
-
-                    @(Html.Kendo()
-        .Grid<UserViewModel>()
-    .Name("grid-user")
+@(Html.Kendo()
+                .Grid<TorrentSite.Areas.ViewModels.CategoryViewModel>()
+    .Name("grid-categories")
     .Columns(columns =>
     {
-        columns.Bound(model => model.Username);
-        columns.Bound(model => model.RolesAsString);
+        columns.Bound(model => model.Name);
+        columns.Bound(model => model.Catalog);
         columns.Command(command =>
             {
-                command.Edit().Text("Promote");
+                command.Edit();
                 command.Destroy();
             });
     })
+    .ToolBar(tool =>
+                {
+                    tool.Create();
+                })
     .Pageable(page =>
         {
             page.PreviousNext(true);
@@ -35,7 +38,7 @@
     .Navigatable()
     .Editable(edit =>
         {
-            edit.Mode(GridEditMode.PopUp).TemplateName("UpdateUser");
+            edit.Mode(GridEditMode.PopUp).TemplateName("EditCategory");
         })
     .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
     .Events(ev =>
@@ -49,30 +52,18 @@
             .PageSize(10)
             .ServerOperation(true)
             .Events(ev => ev.Error("errorAlert"))
-            .Create("CreateBook", "Books")
-            .Read("ReadUsers", "Users")
-            .Update("UpdateUser", "Users")
-            .Destroy("DeleteUser", "Users");
+            .Create("CreateCategory", "Categories")
+            .Read("ReadCategories", "Categories")
+            .Update("UpdateCategory", "Categories")
+            .Destroy("DeleteCategory", "Categories");
     }))
 
-                    
-
-
 <script>
-
-    function errorAlert() {
-        console.log("An error ocurred");
-    }
-
     function refreshPage() {
         document.location.reload();
     }
 
-    function selectCatValue(e) {
-        $('#catNameTb').val(this.dataItem(e.item.index()).Name);
-        $('#catNameTb').text(this.dataItem(e.item.index()).Name);
-        $('#catNameTb').html(this.dataItem(e.item.index()).Name);
-
-
+    function errorAlert() {
+        console.log("An error ocurred");
     }
 </script>

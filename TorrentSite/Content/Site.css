@@ -33,3 +33,9 @@ input[type="checkbox"].input-validation-error {
   background-color: white;
   border-style:none;
 }
+
+#torrentHeaders {
+    background-color:#008886;
+    color:white;
+
+}

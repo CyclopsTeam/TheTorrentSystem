@@ -38,6 +38,7 @@ namespace TorrentSite.Models
 
         public int CatalogueId { get; set; }
 
+        //public virtual Catalogue Catalog { get; set; }
         public virtual ICollection<Category> Category { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }

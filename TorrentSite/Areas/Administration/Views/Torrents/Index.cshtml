@@ -1,0 +1,49 @@
+﻿@model ICollection<TorrentSite.Areas.ViewModels.TorrentViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All Torrents</h2>
+
+<fieldset>
+    <legend>Search Form</legend>
+    <div>
+        @using (Ajax.BeginForm("SearchByCategory", new AjaxOptions
+{
+    UpdateTargetId = "allTorrents",
+    InsertionMode = InsertionMode.Replace
+}))
+        {
+
+            @(Html.Kendo()
+        .DropDownList()
+        .Name("categoryId")
+        .OptionLabel("All")
+        .DataTextField("Name")
+        .DataValueField("Id")
+                //.Events(ev => ev.Change("selectedValue"))
+        .DataSource(data =>
+        {
+            data.Read(read =>
+                {
+                    read.Action("GetCategories", "Torrents");
+                    //.Data("cascadeCategories");
+                })
+                .ServerFiltering(true);
+        }))
+            <br />
+            <br />
+            <input type="submit" class="btn-info" value="Search" />
+
+        }
+    </div>
+</fieldset>
+
+<div id="allTorrents">
+    @{
+
+        Html.RenderPartial("_AllTorrentsList", Model);
+    }
+</div>
+@Html.ActionLink("CreateTorrent", "CreateTorrent", "Torrents", null, new { @class = "btn-info" })
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
