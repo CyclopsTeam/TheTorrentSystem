@@ -17,7 +17,12 @@ namespace TorrentSite.Data.Migrations
 
         protected override void Seed(DataContext context)
         {
-            //this.PopulateDb(context);
+            if (context.Torrents.Count() > 0)
+            {
+                return;
+            }
+
+            this.PopulateDb(context);
         }
 
         private void PopulateDb(DataContext context)

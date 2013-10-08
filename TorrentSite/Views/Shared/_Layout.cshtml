@@ -27,14 +27,16 @@
                 </button>
                 @Html.ActionLink("Torrent System", "Index", "Home", null, new { @class = "brand" })
                 <div class="nav-collapse collapse">
-                    <ul class="nav">
+                    <ul class="nav" >
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("Catalogues", "Index", "Catalogues")</li>
                         <li>@Html.ActionLink("Torrents", "Index", "Torrents")</li>
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li>@Html.ActionLink("Administration", "Index", "Administration/Users")</li>
-                        }
+                        @*@if (User.IsInRole("Admin"))
+                        {*@
+                            <li>@Html.ActionLink("UserAdministration", "Index", "Administration/Users")</li>
+                            <li>@Html.ActionLink("CategoriesAdministration", "Index", "Administration/CategoriesAdministration")</li>
+                            <li>@Html.ActionLink("TorrentsAdministration", "Index", "Administration/TorrentsAdministration")</li>
+                        @*}*@
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
@@ -50,5 +52,8 @@
     </div>
 
     @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $("#MainMenu").kendoMenu();
+    </script>
 </body>
 </html>

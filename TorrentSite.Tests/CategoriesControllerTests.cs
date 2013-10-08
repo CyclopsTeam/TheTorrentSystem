@@ -14,8 +14,7 @@ namespace TorrentSite.Tests
     [TestClass]
     public class CategoriesControllerTests
     {
-
-
+        
         [TestMethod]
         public void CategoriesMethodShouldReturnProperObject()
         {
