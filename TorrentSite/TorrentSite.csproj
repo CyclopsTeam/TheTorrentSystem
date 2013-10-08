@@ -312,7 +312,12 @@
     <Content Include="Views\Catalogues\ChoosenCatalogue.cshtml" />
     <Content Include="Views\Catalogues\ChoosenCategory.cshtml" />
     <Content Include="Views\Shared\_TorrentsSearch.cshtml" />
-    <Content Include="Views\Categories\Categories.cshtml" />
+    <Content Include="Views\Category\Category.cshtml" />
+    <Content Include="Views\Torrents\Details.cshtml" />
+    <Content Include="Views\Catalogues\EditorTemplates\CategoryViewModel.cshtml" />
+    <Content Include="Views\Shared\_CommentPartial.cshtml" />
+    <Content Include="Views\Catalogues\_Details.cshtml" />
+    <Content Include="Views\Category\_Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Models\" />

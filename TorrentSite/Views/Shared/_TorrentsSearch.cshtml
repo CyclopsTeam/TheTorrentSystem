@@ -32,8 +32,14 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr id="row@(item.Id)" class="torrent-listview">
         <td>
+            @Ajax.ActionLink("Details", "Details", new { id = item.Id }, new AjaxOptions
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "row" + item.Id,
+                   })
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>

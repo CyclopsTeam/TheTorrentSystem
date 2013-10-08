@@ -1,0 +1,17 @@
+﻿@model TorrentSite.ViewModels.TorrentViewModel
+
+<td colspan="10">
+    <h2 class="span3">@Model.Title</h2>
+    <h4 class="span3"><a href="#">@Model.FileLink</a></h4>
+    <p class="span3">
+        <strong>Description: </strong>
+        @Model.Description
+    </p>
+    <span class="span3">
+        <strong>Date created: </strong>
+        @Model.DateCreated
+    </span>
+    
+    @Html.ActionLink("Back to List", "ChoosenCatalogue/" + (string)ViewBag.Catalogue)
+
+</td>

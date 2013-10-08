@@ -63,14 +63,14 @@ namespace TorrentSite.Data.Migrations
             };
             context.Catalogues.Add(moviesCatalogue);
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 50; i++)
             {
                 var torrent = new Torrent()
                 {
-                    Title = "Random Game #" + i,
-                    CatalogueId = 0,
+                    Title = "Random Movie #" + i,
+                    CatalogueId = 1,
                     DateCreated = DateTime.Now,
-                    Description = "Some random game",
+                    Description = "Some random movie",
                     FileLink = "someUrl",
                     Leechers = rand.Next(0, 10),
                     Seeders = rand.Next(1, 20),
@@ -115,12 +115,12 @@ namespace TorrentSite.Data.Migrations
             };
             context.Catalogues.Add(gamesCatalogue);
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 50; i++)
             {
                 var torrent = new Torrent()
                 {
                     Title = "Random Game #" + i,
-                    CatalogueId = 1,
+                    CatalogueId = 2,
                     DateCreated = DateTime.Now,
                     Description = "Some random game",
                     FileLink = "someUrl",

@@ -13,6 +13,11 @@ namespace TorrentSite
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(
+                name: "Category",
+                url: "Category/{action}/{id}",
+                defaults: new { controller = "Category", action = "Index", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "Catalogue",

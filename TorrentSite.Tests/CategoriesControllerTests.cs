@@ -21,16 +21,16 @@ namespace TorrentSite.Tests
         {
             int id = 1;
 
-            var list = new List<Category>();
-            list.Add(new Category() { Id = id });
-            list.Add(new Category() { Id = id + 1 });
+            var list = new List<Torrent>();
+            list.Add(new Torrent() { Id = id });
+            list.Add(new Torrent() { Id = id + 1 });
 
             var uowDataMock = new Mock<IUowData>();
-            uowDataMock.Setup(x => x.Categories.All()).Returns(list.AsQueryable());
-            var controller = new CategoriesController(uowDataMock.Object);
-            var viewResult = controller.Categories(id) as ViewResult;
+            uowDataMock.Setup(x => x.Torrents.All()).Returns(list.AsQueryable());
+            var controller = new CategoryController(uowDataMock.Object);
+            var viewResult = controller.Category(id) as ViewResult;
             Assert.IsNotNull(viewResult, "Index action returns null.");
-            var model = viewResult.Model as IEnumerable<CategoryViewModel>;
+            var model = viewResult.Model as IEnumerable<TorrentSite.ViewModels.TorrentViewModel>;
             Assert.IsNotNull(model, "The model is null.");
         }
 
@@ -39,15 +39,15 @@ namespace TorrentSite.Tests
         {
             int id = 1;
 
-            var list = new List<Category>();
-            list.Add(new Category() { Id = id + 1 });
+            var list = new List<Torrent>();
+            list.Add(new Torrent() { Id = id + 1 });
 
             var uowDataMock = new Mock<IUowData>();
-            uowDataMock.Setup(x => x.Categories.All()).Returns(list.AsQueryable());
-            var controller = new CategoriesController(uowDataMock.Object);
-            var viewResult = controller.Categories(id) as ViewResult;
+            uowDataMock.Setup(x => x.Torrents.All()).Returns(list.AsQueryable());
+            var controller = new CategoryController(uowDataMock.Object);
+            var viewResult = controller.Category(id) as ViewResult;
             Assert.IsNotNull(viewResult, "Index action returns null.");
-            var model = viewResult.Model as IEnumerable<CategoryViewModel>;
+            var model = viewResult.Model as IEnumerable<TorrentSite.ViewModels.TorrentViewModel>;
             Assert.IsNotNull(model, "The model is null.");
             Assert.AreEqual(model.Count(), 0);
         }
@@ -57,14 +57,14 @@ namespace TorrentSite.Tests
         {
             int id = 1;
 
-            var list = new List<Category>();
+            var list = new List<Torrent>();
 
             var uowDataMock = new Mock<IUowData>();
-            uowDataMock.Setup(x => x.Categories.All()).Returns(list.AsQueryable());
-            var controller = new CategoriesController(uowDataMock.Object);
-            var viewResult = controller.Categories(id) as ViewResult;
+            uowDataMock.Setup(x => x.Torrents.All()).Returns(list.AsQueryable());
+            var controller = new CategoryController(uowDataMock.Object);
+            var viewResult = controller.Category(id) as ViewResult;
             Assert.IsNotNull(viewResult, "Index action returns null.");
-            var model = viewResult.Model as IEnumerable<CategoryViewModel>;
+            var model = viewResult.Model as IEnumerable<TorrentSite.ViewModels.TorrentViewModel>;
             Assert.IsNotNull(model, "The model is null.");
             Assert.AreEqual(model.Count(), 0);
         }

@@ -39,3 +39,11 @@ input[type="checkbox"].input-validation-error {
     color:white;
 
 }
+
+.torrent-listview {
+
+}
+
+.torrent-listview:hover {
+    box-shadow: #666 0 0 10px inset;
+}

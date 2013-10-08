@@ -1,0 +1,13 @@
+﻿@model IEnumerable<TorrentSite.ViewModels.TorrentViewModel>
+
+@{
+    ViewBag.Title = ViewBag.Category;
+}
+
+<h2>@ViewBag.Category</h2>
+
+<div id="result">
+    @Html.Partial("_TorrentsSearch", Model)
+</div>
+
+

@@ -37,6 +37,7 @@ namespace TorrentSite.Models
         public int Leechers { get; set; }
 
         public int CatalogueId { get; set; }
+
         public virtual ICollection<Category> Categories { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }

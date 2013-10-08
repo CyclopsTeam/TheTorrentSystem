@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TorrentSite.Data;
@@ -28,10 +29,12 @@ namespace TorrentSite.Controllers
               .Select(x => new TreeViewItemModel
               {
                   Text = x.Name,
-                  Items = this.Data.Categories.All().Where(cat => cat.CatalogueId == x.Id).ToList()
+                  Items = this.Data.Categories.All()
+                  .Where(cat => cat.CatalogueId == x.Id).ToList()
                   .Select(tr => new TreeViewItemModel
                   {
-                      Text = tr.Name
+                      Text = tr.Name,
+                      Url = "~/Category/Category/" + tr.Id,
                   })
                   .ToList()
               });
@@ -71,9 +74,12 @@ namespace TorrentSite.Controllers
                 Id = catalogue.Id,
                 Name = catalogue.Name,
                 Image = catalogue.Image,
-                Categories = catalogue.Categories.AsQueryable().Select(CategoryViewModel.FromCategory).ToList()
+                Categories = catalogue.Categories.AsQueryable()
+                .Select(CategoryViewModel.FromCategory).ToList()
             };
-            singleCat.Torrents = this.Data.Torrents.All().Where(t => t.CatalogueId == singleCat.Id).Select(TorrentViewModel.FromTorrent).ToList();
+            singleCat.Torrents = this.Data.Torrents.All()
+                .Where(t => t.CatalogueId == singleCat.Id)
+                .Select(TorrentViewModel.FromTorrent).ToList();
             return View(singleCat);
         }
 
@@ -102,6 +108,30 @@ namespace TorrentSite.Controllers
                 });
 
             return View();
+        }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var torrent = this.Data.Torrents.All()
+                .Where(x => x.Id == id.Value)
+                .Select(TorrentViewModel.FromTorrent)
+                .FirstOrDefault();
+
+            if (torrent == null)
+            {
+                return HttpNotFound();
+            }
+
+            var catalogue = this.Data.Catalogues.All()
+                .Where(x => x.Id == torrent.CatalogueId)
+                .FirstOrDefault().Name;
+            this.ViewBag.Catalogue = catalogue;
+
+            return PartialView("_Details", torrent);
         }
     }
 }
