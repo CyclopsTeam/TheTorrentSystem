@@ -10,7 +10,7 @@
     @Model.Image
 </div>
 
-<div id="category-checkbox-container row">
+@*<div id="category-checkbox-container row">
     @using (Html.BeginForm("FilterByCategory", "Catalogues"))
     {
         for (int i = 0; i < Model.Categories.Count(); i++)
@@ -18,13 +18,13 @@
             <label class="checkbox inline">
                 <input type="checkbox" value="@Model.Categories[i].Name" id="@Model.Categories[i].Id">
                 @Model.Categories[i].Name
-                @*@Html.ActionLink(Model.Categories[i].Name, "Categories/" + Model.Categories[i].Id,
-                "Categories", new { Model.Categories[i].Id }, new { @class = "btn" })*@
+                @Html.ActionLink(Model.Categories[i].Name, "Categories/" + Model.Categories[i].Id,
+                "Categories", new { Model.Categories[i].Id }, new { @class = "btn" })
             </label>
         }
         <input type="submit" value="submit" />
     }
-</div>
+</div>*@
 
 @using (Ajax.BeginForm("Search", new AjaxOptions
 {
@@ -33,7 +33,7 @@
     OnSuccess = "clearSeachField"
 }))
 {
-    <input type="text" name="query" id="text-search" />
+    
     <input type="hidden" name="hiddenName" value="@ViewBag.CatName" />
     
     <div id="category-checkbox-container row">
@@ -50,6 +50,8 @@
                 "Categories", new { Model.Categories[i].Id }, new { @class = "btn" })*@
             </label>
         }
+        <br />
+        <input type="text" name="query" id="text-search" />
         <input type="submit" value="Submit" />
 </div>
 }
