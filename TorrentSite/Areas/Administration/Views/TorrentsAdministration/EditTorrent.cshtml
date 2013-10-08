@@ -6,7 +6,7 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm("SaveEditedTorrent", "Torrents"))
+@using (Html.BeginForm("SaveEditedTorrent", "TorrentsAdministration"))
 {
        
     @Html.AntiForgeryToken()
@@ -78,4 +78,4 @@
     </fieldset>
 }
 
-@Html.ActionLink("Back", "Index", "Torrents", null, new { @class = "btn" })
+@Html.ActionLink("Back", "Index", "TorrentsAdministration", null, new { @class = "btn" })

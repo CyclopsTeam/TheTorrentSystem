@@ -14,9 +14,9 @@ using Kendo.Mvc.Extensions;
 namespace TorrentSite.Areas.Administration.Controllers
 {
     //[Authorize(Roles="Admin")]
-    public class TorrentsController : BaseController
+    public class TorrentsAdministrationController : BaseController
     {
-        public TorrentsController(IUowData data)
+        public TorrentsAdministrationController(IUowData data)
             : base(data)
         {
         }

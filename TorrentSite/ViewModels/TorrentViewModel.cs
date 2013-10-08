@@ -30,7 +30,7 @@ namespace TorrentSite.ViewModels
                     Seeders = t.Seeders,
                     Leechers = t.Leechers,
                     CatalogueId = t.CatalogueId,
-                    Category = t.Categories,
+                    Categories = t.Categories.Select(c => new CategoryViewModel() { Id = c.Id, Name = c.Name} ),
                     Comments = t.Comments.Select(x => new CommentViewModel() { Content = x.Content, CommentedBy = x.Creator.UserName, CommentedOn = x.DateCreated })
                 };
             }
@@ -60,7 +60,7 @@ namespace TorrentSite.ViewModels
 
         public int CatalogueId { get; set; }
 
-        public ICollection<Category> Category { get; set; }
+        public IEnumerable<CategoryViewModel> Categories { get; set; }
 
         public IEnumerable<CommentViewModel> Comments { get; set; }
     }

@@ -12,10 +12,10 @@ using TorrentSite.Models;
 
 namespace TorrentSite.Areas.Administration.Controllers
 {
-    public class CategoriesController : BaseController
+    public class CategoriesAdministrationController : BaseController
     {
 
-        public CategoriesController(IUowData data)
+        public CategoriesAdministrationController(IUowData data)
             : base(data)
         {
         }

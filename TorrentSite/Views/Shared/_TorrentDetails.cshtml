@@ -35,7 +35,7 @@
                 <dt>Size:</dt>
                 <dd>@Model.Size</dd>
                 <dt>Categories:</dt>
-                <dd>@string.Join(", ", Model.Category.Select(c => c.Name))</dd>
+                <dd>@string.Join(", ", Model.Categories.Select(c => c.Name))</dd>
             </dl>
         </section>
         <br />

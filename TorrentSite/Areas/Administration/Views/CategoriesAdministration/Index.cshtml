@@ -52,10 +52,10 @@
             .PageSize(10)
             .ServerOperation(true)
             .Events(ev => ev.Error("errorAlert"))
-            .Create("CreateCategory", "Categories")
-            .Read("ReadCategories", "Categories")
-            .Update("UpdateCategory", "Categories")
-            .Destroy("DeleteCategory", "Categories");
+            .Create("CreateCategory", "CategoriesAdministration")
+            .Read("ReadCategories", "CategoriesAdministration")
+            .Update("UpdateCategory", "CategoriesAdministration")
+            .Destroy("DeleteCategory", "CategoriesAdministration");
     }))
 
 <script>

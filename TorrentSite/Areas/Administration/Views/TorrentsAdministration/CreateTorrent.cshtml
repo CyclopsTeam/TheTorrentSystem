@@ -5,7 +5,7 @@
 
 <h2>CreateTorrent</h2>
 
-@using (Html.BeginForm("CreateNewTorrent", "Torrents"))
+@using (Html.BeginForm("CreateNewTorrent", "TorrentsAdministration"))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -68,4 +68,4 @@
         </div>
     </fieldset>
 }
-@Html.ActionLink("Back", "Index", "Torrents", null, new { @class = "btn" })
+@Html.ActionLink("Back", "Index", "TorrentsAdministration", null, new { @class = "btn" })
