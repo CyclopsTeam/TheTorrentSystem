@@ -20,6 +20,8 @@
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -171,8 +173,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
-    <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
-    <Compile Include="Areas\Administration\Controllers\TorrentsController.cs" />
+    <Compile Include="Areas\Administration\Controllers\CategoriesAdministrationController.cs" />
+    <Compile Include="Areas\Administration\Controllers\TorrentsAdministrationController.cs" />
     <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
     <Compile Include="Areas\ViewModels\CategoryViewModel.cs" />
     <Compile Include="Areas\ViewModels\TorrentViewModel.cs" />
@@ -260,12 +262,12 @@
     <Content Include="Areas\Administration\Views\Users\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\UpdateUser.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\EditCategory.cshtml" />
-    <Content Include="Areas\Administration\Views\Categories\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\Torrents\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_AllTorrentsList.cshtml" />
-    <Content Include="Areas\Administration\Views\Torrents\CreateTorrent.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\fileUpload.cshtml" />
-    <Content Include="Areas\Administration\Views\Torrents\EditTorrent.cshtml" />
+    <Content Include="Areas\Administration\Views\CategoriesAdministration\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\TorrentsAdministration\CreateTorrent.cshtml" />
+    <Content Include="Areas\Administration\Views\TorrentsAdministration\EditTorrent.cshtml" />
+    <Content Include="Areas\Administration\Views\TorrentsAdministration\Index.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -363,6 +365,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
