@@ -34,8 +34,24 @@
 }))
 {
     <input type="text" name="query" id="text-search" />
-    <input type="submit" />
     <input type="hidden" name="hiddenName" value="@ViewBag.CatName" />
+    
+    <div id="category-checkbox-container row">
+        @for (int i = 0; i < Model.Categories.Count(); i++)
+        {
+            var optionValue = "MyOptions_" + Model.Categories[i].isSelected;
+            <label class="checkbox inline">
+                <input type="checkbox"
+                       name="MyOptions"
+                       value="@Model.Categories[i].Name"
+                       id="@Model.Categories[i].Id">
+                @Model.Categories[i].Name
+                @*@Html.ActionLink(Model.Categories[i].Name, "Categories/" + Model.Categories[i].Id,
+                "Categories", new { Model.Categories[i].Id }, new { @class = "btn" })*@
+            </label>
+        }
+        <input type="submit" value="Submit" />
+</div>
 }
 
 

@@ -89,12 +89,27 @@ namespace TorrentSite.Controllers
             return View();
         }
 
-        public ActionResult Search(string query, string hiddenName)
-        {
+        public ActionResult Search(string query, string hiddenName, string[] MyOptions)
+        {      
             var catalogue = this.Data.Catalogues.All().FirstOrDefault(cat => cat.Name == hiddenName);
-            var result = this.Data.Torrents.All().Where(t => (t.Title.Contains(query) && t.CatalogueId == catalogue.Id )).Select(TorrentViewModel.FromTorrent);
+            if (MyOptions == null)
+            {
 
-            return PartialView("_TorrentsSearch", result);
+                var result = this.Data.Torrents.All().Where(t => (t.Title.Contains(query) && t.CatalogueId == catalogue.Id)).Select(TorrentViewModel.FromTorrent);
+                return PartialView("_TorrentsSearch", result);
+            }
+            else
+            {
+                var result = this.Data.Torrents.All().Where(t => (t.Title.Contains(query) && t.CatalogueId == catalogue.Id));
+                var categories = this.Data.Categories.All();
+                foreach (var item in MyOptions)
+                {
+                    categories = categories.Where(c => c.Name == item);
+                }
+
+                result = result.Where(t => t.Categories == categories);
+                return PartialView("_TorrentsSearch", result);
+            }
         }
 
         public ActionResult Movies()

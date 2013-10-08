@@ -21,5 +21,7 @@ namespace TorrentSite.Models
         public virtual Catalogue Catalogue { get; set; }
 
         public virtual ICollection<Torrent> Torrent { get; set; }
+
+        public bool isSelected { get; set; } 
     }
 }

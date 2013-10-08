@@ -16,13 +16,16 @@ namespace TorrentSite.ViewModels
                 return c => new CategoryViewModel
                 {
                     Id = c.Id,
-                    Name = c.Name
+                    Name = c.Name,
+                    isSelected = c.isSelected
                 };
             }
         }
 
         public int Id { get; set; }
 
-        public string Name { get; set; } 
+        public string Name { get; set; }
+
+        public bool isSelected { get; set; }
     }
 }
